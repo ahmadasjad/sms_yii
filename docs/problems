@@ -1,0 +1,25 @@
+================================================================================
+old jquery was being loaded automatically
+================================================================================
+Solution: Added these line to render user defined path and file in config/main.php 
+inside components
+'clientScript' => array(
+            'packages' => array(
+                'jquery' => array(
+                    'baseUrl' => Yii::app()->request->baseUrl.'/public/design/plugins/jQuery/',
+                    'js' => array('jQuery-2.1.4.min.js'),
+                )
+            ),
+        // other clientScript config
+        ),
+reference : http://www.yiiframework.com/wiki/259/serve-jquery-and-jquery-ui-from-google-s-cdn/
+................................................................................
+
+================================================================================
+Some extra element are being created when rendering the view file. 
+3 tags div.container, div.span-19, div#content are being automatically added.
+================================================================================
+Solution: http://www.yiiframework.com/wiki/249/understanding-the-view-rendering-flow/
+
+
+
