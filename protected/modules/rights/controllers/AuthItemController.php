@@ -430,6 +430,7 @@ class AuthItemController extends RController {
             $childName = $this->getChildName();
             if ($childName !== null && $model->hasChild($childName) === false)
                 $model->addChild($childName);
+            echo 'revoke';
             // if AJAX request, we should not redirect the browser
             if (isset($_POST['ajax']) === false)
                 $this->redirect(array('authItem/permissions'));
@@ -449,6 +450,7 @@ class AuthItemController extends RController {
             $childName = $this->getChildName();
             if ($childName !== null && $model->hasChild($childName) === true)
                 $model->removeChild($childName);
+            echo 'assign';
             // if AJAX request, we should not redirect the browser
             if (isset($_POST['ajax']) === false)
                 $this->redirect(array('authItem/permissions'));

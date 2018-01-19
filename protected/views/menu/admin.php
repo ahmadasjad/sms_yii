@@ -49,11 +49,22 @@ $this->widget('zii.widgets.grid.CGridView', array(
     'filter' => $model,
     'columns' => array(
         'id',
-        //'parent_id',
+//        'parent_id',
+//        'parent_search',
+//        array(
+//            'name' => 'parent_search',
+//            'type' => 'html',
+//            'value' => 'CHtml::link($data->parent->title,Yii::app()->getBaseUrl(true)."/admin/laundry/view/id/".$data->parent_id ,array("target"=>"_blank"))'
+//        ),
         array(
-            'name' => 'parent_id',
-            'value' => '$data->parent->title'
+            'name' => 'parent_search',
+            'type' => 'html',
+            'value' => '@$data->parent->title'
         ),
+//        array(
+//            'name' => 'parent_id',
+//            'value' => '$data->parent->title'
+//        ),
         'title',
         'url',
         //'class',

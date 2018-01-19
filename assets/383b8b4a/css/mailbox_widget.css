@@ -42,7 +42,7 @@ box-shadow: 0px 0px 0px #D6D6D6;
 	padding:8px 14px !important;
 	text-decoration:none;
 	position:absolute;
-	top:16px;
+	/*top:16px;*/
 	right:20px;
 	/*text-shadow:1px 0px 0px #0664a3;*/
 }

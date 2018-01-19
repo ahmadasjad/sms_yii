@@ -196,14 +196,30 @@ class RAuthItemBehavior extends CBehavior
 		
 		return CHtml::link(Rights::t('core', 'Revoke'), '#', array(
 			'onclick'=>"
-				jQuery.ajax({
-					type:'POST',
-					url:'".Yii::app()->controller->createUrl('authItem/revoke', array(
+                                var this_anchor = this;
+                                var this_url = '".Yii::app()->controller->createUrl('authItem/revoke', array(
 						'name'=>urlencode($role->name), 
 						'child'=>urlencode($this->owner->name),
-					))."',
+					))."';
+				jQuery.ajax({
+					type:'POST',
+					url:this_url,
 					data:{ ajax:1 $csrf },
-					success:function() {
+					success:function(result) {
+                                                /*console.log(result);
+                                                if(result=='assign'){
+                                                    this_url = '".Yii::app()->controller->createUrl('authItem/assign', array(
+						'name'=>urlencode($role->name), 
+						'child'=>urlencode($this->owner->name),
+					))."';
+                                                }
+                                                else{
+                                                this_url = '".Yii::app()->controller->createUrl('authItem/revoke', array(
+						'name'=>urlencode($role->name), 
+						'child'=>urlencode($this->owner->name),
+					))."';
+                                                }
+                                                jQuery(this_anchor).html(result);*/
 						$('#permissions').load('".Yii::app()->controller->createUrl('authItem/permissions')."', { ajax:1 $csrf });
 					}
 				});
@@ -225,14 +241,15 @@ class RAuthItemBehavior extends CBehavior
 		
 		return CHtml::link(Rights::t('core', 'Assign'), '#', array(
 			'onclick'=>"
+                            var this_anchor = this;
+                            var this_url = '".Yii::app()->controller->createUrl('authItem/assign', array('name'=>urlencode($role->name), 'child'=>urlencode($this->owner->name),	))."';
 				jQuery.ajax({
 					type:'POST',
-					url:'".Yii::app()->controller->createUrl('authItem/assign', array(
-						'name'=>urlencode($role->name), 
-						'child'=>urlencode($this->owner->name),
-					))."',
+					url:this_url,
 					data:{ ajax:1 $csrf },
-					success:function() {
+					success:function(result) {
+                                                //console.log(result);
+                                                //jQuery(this_anchor).html(result);
 						$('#permissions').load('".Yii::app()->controller->createUrl('authItem/permissions')."', { ajax:1 $csrf });
 					}
 				});
